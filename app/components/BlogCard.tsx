@@ -16,20 +16,20 @@ const BlogCard = (props: Post) => {
   const post: Post = props;
 
   return (
-    <Card className="h-full rounded-lg border border-slate-200 flex flex-col justify-between shadow ring-4 ring-border/50 cursor-pointer transition-transform hover:-translate-y-1">
+    <Card className="h-full rounded-xl border border-slate-200 flex flex-col justify-between shadow ring-4 ring-border/50 cursor-pointer transition-transform hover:-translate-y-1">
       {/* Header */}
-      <CardHeader className="space-y-3">
+      <CardHeader className="space-y-2">
         <ActionButtons id={post.userId} />
         <CardTitle className="font-semibold leading-snug capitalize line-clamp-2">{post.title}</CardTitle>
       </CardHeader>
 
       {/* Content */}
-      <CardContent className="text-sm text-muted-foreground line-clamp-3">
+      <CardContent className="text-sm text-muted-foreground line-clamp-5">
         {post.description}
       </CardContent>
 
       {/* Footer */}
-      <CardFooter className="flex flex-col items-start gap-2 mt-8">
+      <CardFooter className="flex flex-col items-start gap-2 mt-4">
         <Button variant="outline" asChild className="w-full" size="lg">
           <Link href={`/blog/${post.userId}`}>
             Read More <LucideArrowRight />

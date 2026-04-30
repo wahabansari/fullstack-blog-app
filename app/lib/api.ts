@@ -17,7 +17,6 @@ export const fetchPostById = async (id: number) => {
   try {
     const res = await fetch(
       `${process.env.NEXT_PUBLIC_BASE_URL}/posts/${postId}`,
-      { cache: "no-store" },
     );
     return res.json();
   } catch (error) {
@@ -46,5 +45,3 @@ export const deletePostById = async (id: number) => {
     );
   }
 };
-
-

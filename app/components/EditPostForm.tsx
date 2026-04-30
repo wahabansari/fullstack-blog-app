@@ -1,6 +1,6 @@
 "use client";
 
-import { use, useActionState } from "react";
+import { useActionState } from "react";
 import { updatePostHandler } from "@/app/actions/edit-post";
 import { Post } from "../types/post.types";
 import { cn } from "@/lib/utils";
@@ -20,12 +20,7 @@ import { Button } from "@/components/ui/button";
 import { Spinner } from "@/components/ui/spinner";
 
 const EditPostForm = ({ post }: { post: Post }) => {
-  const [data, formAction, isPending] = useActionState(updatePostHandler, {
-    title: "",
-    description: "",
-    tags: [],
-    id: "",
-  });
+  const [, formAction, isPending] = useActionState(updatePostHandler, null);
 
   return (
     <>

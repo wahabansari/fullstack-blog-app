@@ -1,4 +1,7 @@
-export const addPostHandler = async (prevData: FormData, formData: FormData) => {
+export const addPostHandler = async (
+  prevState: { success: boolean; message: string } | null,
+  formData: FormData,
+) => {
   const raw = Object.fromEntries(formData.entries());
 
   if (!raw.title || !raw.body) {
@@ -12,8 +15,8 @@ export const addPostHandler = async (prevData: FormData, formData: FormData) => 
     title: raw.title,
     description: raw.body,
     tags: String(raw.tags)
-      .split(",")
-      .map((tag) => tag.trim()),
+      ?.split(",")
+      ?.map((tag) => tag.trim()),
     views: Math.max(Math.random()) || 0, // Default views count
     userId: Math.floor(Math.random() * 100) + 1, // Random user ID for demo purposes
   };

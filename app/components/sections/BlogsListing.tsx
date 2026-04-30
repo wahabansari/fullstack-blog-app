@@ -27,7 +27,7 @@ const BlogsListing = async () => {
             xl:grid-cols-3"
         >
           {/* Temporary static cards */}
-          {posts.slice(0, 6).map((post: Post) => (
+          {posts?.slice(0, 6)?.map((post: Post) => (
             <BlogCard key={post.userId} {...post} />
           ))}
         </div>

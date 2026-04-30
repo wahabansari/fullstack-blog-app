@@ -12,7 +12,7 @@ const BlogDetail = async ({ params }: { params: Promise<{ id: string }> }) => {
     <article className="max-w-6xl mx-auto px-4 py-12">
       {/* Tags */}
       <div className="flex flex-wrap gap-1 mb-2">
-        {post.tags.map((tag: string, index: number) => (
+        {post?.tags?.map((tag: string, index: number) => (
           <Badge key={index} variant="secondary"  className="capitalize">
             {tag}
           </Badge>

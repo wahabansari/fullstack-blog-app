@@ -1,16 +1,14 @@
 import { redirect } from "next/navigation";
 
-export const updatePostHandler = async (_: FormData, formData: FormData) => {
+export const updatePostHandler = async (_: null, formData: FormData) => {
   const postId = Number(formData.get("id"));
-  console.log(postId, "post id in action handler");
   const raw = Object.fromEntries(formData.entries());
-  console.log(raw, "raw form data in action handler");
   const payload = {
     title: raw.title,
     description: raw.description,
     tags: String(raw.tags)
-      .split(",")
-      .map((tag) => tag.trim()),
+      ?.split(",")
+      ?.map((tag) => tag.trim()),
   };
 
   try {
