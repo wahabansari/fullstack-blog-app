@@ -1,6 +1,5 @@
-import type { Request, Response } from "express";
+import { json, type Request, type Response } from "express";
 import { db } from "../db.ts";
-import { log } from "console";
 
 // Get All Posts
 export const getAllPostsRouteHandler = async (_: Request, res: Response) => {
@@ -15,6 +14,28 @@ export const getSinglePostById = async (req: Request, res: Response) => {
   const row = await db.query(`SELECT * FROM posts WHERE id=$1`, [postId]);
   const result = row.rows;
   return res.json(result);
+};
+
+// Create Single Post By ID
+export const generateSinglePost = async (req: Request, res: Response) => {
+  const { title, description, tags } = req.body;
+
+  try {
+    const result = await db.query(
+      `INSERT INTO posts (title,description,tags) VALUES ($1,$2,$3)`,
+      [title, description, tags],
+    );
+    if (result.rowCount === 0) {
+      console.log("Record Added Successfully");
+    }
+    res
+      .status(201)
+      .json({ messge: "User Created Successfully!", data: req.body });
+  } catch (error) {
+    res
+      .status(500)
+      .json({ messge: new Error("Something strange is happening!") });
+  }
 };
 
 // Delete User By ID
