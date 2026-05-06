@@ -1,6 +1,6 @@
 import { type Request, type Response } from "express";
 import db from "../db.ts";
-import { postsTable } from "../drizzle/schema.ts";
+import { postsTable } from "../../drizzle/schema.ts";
 import { eq } from "drizzle-orm";
 
 // Get All Posts
