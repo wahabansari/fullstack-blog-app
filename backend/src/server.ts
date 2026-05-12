@@ -4,6 +4,7 @@ import cors from "cors";
 
 // Importing Routes
 import postRoutes from "./routes/post.ts";
+import authRouter from "./routes/users.ts";
 
 const app = express();
 const server = http.createServer(app);
@@ -15,6 +16,9 @@ app.use(express.urlencoded({ extended: false }));
 
 // Subscribing Rouyes
 app.use("/api", postRoutes);
+
+// Auth Routesr
+app.use("/api", authRouter);
 
 // Listening Server
 server.listen(process.env.PORT, () =>
